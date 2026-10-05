@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lina Pâtisserie | Gâteaux & Douceurs</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+
+        /* ========================================
+           RESET
+        ======================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #fffaf7;
+            color: #352521;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+
+        /* ========================================
+           VARIABLES
+        ======================================== */
+
+        :root {
+            --brown: #5c3930;
+            --brown-dark: #3d2520;
+            --cream: #fffaf7;
+            --rose: #d99a8c;
+            --rose-light: #f4ddd7;
+            --gold: #b88a54;
+            --text: #352521;
+            --muted: #806d67;
+            --white: #ffffff;
+        }
+
+
+        /* ========================================
+           CONTAINER
+        ======================================== */
+
+        .container {
+            width: min(1120px, 90%);
+            margin: auto;
+        }
+
+
+        /* ========================================
+           HEADER
+        ======================================== */
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 250, 247, 0.94);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(92, 57, 48, 0.08);
+        }
+
+        .nav {
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .logo {
+            font-family: "Playfair Display", serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--brown);
+        }
+
+        .logo span {
+            color: var(--rose);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--brown);
+            transition: 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--rose);
+        }
+
+        .nav-button {
+            padding: 11px 19px;
+            border-radius: 30px;
+            background: var(--brown);
+            color: white !important;
+        }
+
+        .nav-button:hover {
+            background: var(--brown-dark);
+        }
+
+
+        /* ========================================
+           HERO
+        ======================================== */
+
+        .hero {
+            min-height: 680px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: var(--rose-light);
+            border-radius: 50%;
+            right: -180px;
+            top: -120px;
+            opacity: 0.6;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 70px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-label {
+            color: var(--rose);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(48px, 6vw, 76px);
+            line-height: 1.05;
+            margin: 18px 0 22px;
+            color: var(--brown-dark);
+        }
+
+        .hero h1 span {
+            color: var(--rose);
+        }
+
+        .hero p {
+            max-width: 500px;
+            color: var(--muted);
+            font-size: 16px;
+            margin-bottom: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 13px 22px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--brown);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: var(--brown-dark);
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(92,57,48,0.2);
+            color: var(--brown);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--rose);
+            color: var(--rose);
+        }
+
+
+        /* ========================================
+           HERO VISUAL
+        ======================================== */
+
+        .hero-visual {
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cake-display {
+            width: 390px;
+            height: 390px;
+            border-radius: 50%;
+            background:
+                radial-gradient(
+                    circle at 50% 45%,
+                    #fff 0,
+                    #f8e5df 45%,
+                    #e8bdb1 100%
+                );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 30px 70px rgba(92,57,48,0.16);
+        }
+
+        .cake {
+            width: 220px;
+            height: 140px;
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .cake-top {
+            width: 220px;
+            height: 75px;
+            border-radius: 50%;
+            background: #fff8f3;
+            border: 3px solid #e6c9bd;
+            position: absolute;
+            top: 0;
+        }
+
+        .cake-body {
+            width: 210px;
+            height: 85px;
+            background: linear-gradient(
+                90deg,
+                #e6b8a9,
+                #f8ded5,
+                #d99a8c
+            );
+            position: absolute;
+            top: 38px;
+            left: 5px;
+            border-radius: 0 0 35px 35px;
+        }
+
+        .cake-cream {
+            position: absolute;
+            width: 220px;
+            height: 30px;
+            background: white;
+            border-radius: 50%;
+            top: 30px;
+            left: 0;
+            z-index: 2;
+        }
+
+        .cake-cherry {
+            position: absolute;
+            width: 17px;
+            height: 17px;
+            background: #a54b48;
+            border-radius: 50%;
+            top: 10px;
+            left: 100px;
+            z-index: 5;
+        }
+
+        .cake-leaf {
+            position: absolute;
+            width: 25px;
+            height: 12px;
+            border-radius: 100% 0;
+            background: #82936a;
+            top: 3px;
+            left: 113px;
+            transform: rotate(-25deg);
+            z-index: 4;
+        }
+
+
+        /* FLOATING DETAILS */
+
+        .floating-note {
+            position: absolute;
+            padding: 13px 17px;
+            background: rgba(255,255,255,0.9);
+            border: 1px solid rgba(92,57,48,0.08);
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(92,57,48,0.12);
+            font-size: 12px;
+            color: var(--brown);
+            z-index: 4;
+        }
+
+        .note-one {
+            top: 70px;
+            left: 0;
+        }
+
+        .note-two {
+            right: 0;
+            bottom: 80px;
+        }
+
+
+        /* ========================================
+           SECTION
+        ======================================== */
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 55px;
+        }
+
+        .section-heading span {
+            color: var(--rose);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        .section-heading h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 42px;
+            margin: 12px 0;
+            color: var(--brown-dark);
+        }
+
+        .section-heading p {
+            color: var(--muted);
+        }
+
+
+        /* ========================================
+           PRODUCTS
+        ======================================== */
+
+        .products {
+            background: #fff;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .product-card {
+            background: var(--cream);
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(92,57,48,0.08);
+            transition: 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(92,57,48,0.1);
+        }
+
+        .product-image {
+            height: 230px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--rose-light);
+            position: relative;
+        }
+
+        .dessert {
+            position: relative;
+            width: 120px;
+            height: 90px;
+        }
+
+        .dessert-base {
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            width: 100px;
+            height: 65px;
+            background: #e9b9a9;
+            border-radius: 8px 8px 22px 22px;
+        }
+
+        .dessert-top {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 110px;
+            height: 45px;
+            border-radius: 50%;
+            background: #fff7f1;
+            border: 3px solid #e2c3b8;
+        }
+
+        .product-content {
+            padding: 24px;
+        }
+
+        .product-content h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 23px;
+            color: var(--brown);
+            margin-bottom: 7px;
+        }
+
+        .product-content p {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+
+        /* ========================================
+           STORY
+        ======================================== */
+
+        .story {
+            background: #f8eee9;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .story-visual {
+            height: 420px;
+            border-radius: 30px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #e8c1b5,
+                    #fff4ee
+                );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-circle {
+            width: 270px;
+            height: 270px;
+            border-radius: 50%;
+            border: 1px solid rgba(92,57,48,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Playfair Display", serif;
+            font-size: 38px;
+            color: var(--brown);
+        }
+
+        .story-content span {
+            color: var(--rose);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .story-content h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 45px;
+            line-height: 1.15;
+            margin: 15px 0 22px;
+            color: var(--brown-dark);
+        }
+
+        .story-content p {
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+
+        /* ========================================
+           CTA
+        ======================================== */
+
+        .cta {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .cta-box {
+            padding: 70px 30px;
+            background: var(--brown);
+            border-radius: 28px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.1);
+            top: -180px;
+            left: -80px;
+        }
+
+        .cta-box h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .cta-box p {
+            opacity: 0.75;
+            margin-bottom: 28px;
+        }
+
+        .cta-box .btn {
+            background: white;
+            color: var(--brown);
+        }
+
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+
+        .footer {
+            padding: 30px 0;
+            border-top: 1px solid rgba(92,57,48,0.08);
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+
+        /* ========================================
+           RESPONSIVE
+        ======================================== */
+
+        @media (max-width: 850px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-grid,
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 70px 0;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .story-content {
+                text-align: center;
+            }
+
+        }
+
+
+        @media (max-width: 550px) {
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cake-display {
+                width: 300px;
+                height: 300px;
+            }
+
+            .cake {
+                transform: scale(0.8);
+            }
+
+            .note-one {
+                left: 5px;
+            }
+
+            .note-two {
+                right: 5px;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+
+            .section-heading h2,
+            .story-content h2,
+            .cta-box h2 {
+                font-size: 32px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- ========================================
+     HEADER
+======================================== -->
+
+<header class="header">
+
+    <div class="container nav">
+
+        <a href="#" class="logo">
+            Lina<span>.</span>
+        </a>
+
+        <nav class="nav-links">
+
+            <a href="#accueil">Accueil</a>
+            <a href="#patisseries">Pâtisseries</a>
+            <a href="#histoire">Notre histoire</a>
+            <a href="#contact">Contact</a>
+
+            <a href="#contact" class="nav-button">
+                Commander
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+<!-- ========================================
+     HERO
+======================================== -->
+
+<section class="hero" id="accueil">
+
+    <div class="container hero-grid">
+
+        <div class="hero-content">
+
+            <span class="hero-label">
+                Pâtisserie artisanale
+            </span>
+
+            <h1>
+                Des douceurs
+                <span>faites avec amour.</span>
+            </h1>
+
+            <p>
+                Gâteaux délicats, pâtisseries artisanales et créations
+                gourmandes imaginées pour rendre chaque moment spécial.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#patisseries" class="btn btn-primary">
+                    Découvrir nos créations
+                    <i class="fa-solid fa-arrow-down"></i>
+                </a>
+
+                <a href="#contact" class="btn btn-outline">
+                    Commander
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+            <div class="cake-display">
+
+                <div class="cake">
+
+                    <div class="cake-top"></div>
+
+                    <div class="cake-body"></div>
+
+                    <div class="cake-cream"></div>
+
+                    <div class="cake-cherry"></div>
+
+                    <div class="cake-leaf"></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="floating-note note-one">
+                ✦ Fait maison
+            </div>
+
+            <div class="floating-note note-two">
+                ♡ Créé avec passion
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================
+     PRODUCTS
+======================================== -->
+
+<section class="section products" id="patisseries">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>
+                Nos créations
+            </span>
+
+            <h2>
+                Une petite douceur ?
+            </h2>
+
+            <p>
+                Découvrez quelques-unes de nos créations artisanales.
+            </p>
+
+        </div>
+
+
+        <div class="products-grid">
+
+
+            <article class="product-card">
+
+                <div class="product-image">
+
+                    <div class="dessert">
+
+                        <div class="dessert-top"></div>
+
+                        <div class="dessert-base"></div>
+
+                    </div>
+
+                </div>
+
+                <div class="product-content">
+
+                    <h3>
+                        Gâteaux signature
+                    </h3>
+
+                    <p>
+                        Des créations élégantes pour vos moments importants.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="product-card">
+
+                <div class="product-image">
+
+                    <div class="dessert">
+
+                        <div
+                            class="dessert-top"
+                            style="background:#fff;"
+                        ></div>
+
+                        <div
+                            class="dessert-base"
+                            style="background:#d99a8c;"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+                <div class="product-content">
+
+                    <h3>
+                        Cupcakes
+                    </h3>
+
+                    <p>
+                        De petites créations gourmandes à partager.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="product-card">
+
+                <div class="product-image">
+
+                    <div class="dessert">
+
+                        <div
+                            class="dessert-top"
+                            style="background:#f5dfb8;"
+                        ></div>
+
+                        <div
+                            class="dessert-base"
+                            style="background:#b77c5e;"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+                <div class="product-content">
+
+                    <h3>
+                        Desserts
+                    </h3>
+
+                    <p>
+                        Des saveurs délicates pour terminer chaque repas.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================
+     STORY
+======================================== -->
+
+<section class="section story" id="histoire">
+
+    <div class="container story-grid">
+
+
+        <div class="story-visual">
+
+            <div class="story-circle">
+                Lina
+            </div>
+
+        </div>
+
+
+        <div class="story-content">
+
+            <span>
+                Notre histoire
+            </span>
+
+            <h2>
+                La passion avant
+                tout.
+            </h2>
+
+            <p>
+                Lina Pâtisserie est née d'une passion pour la pâtisserie
+                artisanale et l'envie de créer des desserts qui racontent
+                une histoire.
+            </p>
+
+            <p>
+                Chaque création est préparée avec soin, en accordant une
+                attention particulière aux détails, aux textures et aux saveurs.
+            </p>
+
+            <a href="#contact" class="btn btn-primary">
+                Découvrir notre univers
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================
+     CTA
+======================================== -->
+
+<section class="cta" id="contact">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+            <h2>
+                Une occasion spéciale ?
+            </h2>
+
+            <p>
+                Parlons de votre prochaine création gourmande.
+            </p>
+
+            <a href="mailto:contact@linapatisserie.ma" class="btn">
+                Nous contacter
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- ========================================
+     FOOTER
+======================================== -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        © 2026 Lina Pâtisserie — Demo website created by NovaWeb.
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>

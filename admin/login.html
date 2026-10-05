@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NovaWeb - Admin Login</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+
+            background:
+                radial-gradient(circle at top left, #312e81, transparent 35%),
+                radial-gradient(circle at bottom right, #581c87, transparent 35%),
+                #070b18;
+
+            color: white;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 430px;
+            padding: 20px;
+        }
+
+        .login-card {
+            padding: 40px;
+            border-radius: 24px;
+
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            backdrop-filter: blur(20px);
+
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.45);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 18px;
+
+            background: linear-gradient(
+                135deg,
+                #6366f1,
+                #8b5cf6
+            );
+
+            font-size: 26px;
+        }
+
+        .logo h1 {
+            font-size: 27px;
+            margin-bottom: 8px;
+        }
+
+        .logo p {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+
+            font-size: 14px;
+            color: #d1d5db;
+        }
+
+        .input-box {
+            position: relative;
+        }
+
+        .input-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #8b5cf6;
+        }
+
+        .input-box input {
+            width: 100%;
+
+            padding: 14px 15px 14px 45px;
+
+            border-radius: 12px;
+
+            border: 1px solid rgba(255,255,255,0.1);
+
+            background: rgba(255,255,255,0.05);
+
+            color: white;
+
+            outline: none;
+
+            font-size: 14px;
+        }
+
+        .input-box input:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139,92,246,0.15);
+        }
+
+        .input-box input::placeholder {
+            color: #6b7280;
+        }
+
+        .password-toggle {
+            position: absolute;
+
+            right: 15px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            cursor: pointer;
+
+            color: #9ca3af;
+        }
+
+        .login-btn {
+            width: 100%;
+
+            padding: 14px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: linear-gradient(
+                135deg,
+                #6366f1,
+                #8b5cf6
+            );
+
+            color: white;
+
+            font-size: 15px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 30px rgba(99,102,241,0.3);
+        }
+
+        .error-message {
+            display: none;
+
+            margin-bottom: 18px;
+
+            padding: 12px;
+
+            border-radius: 10px;
+
+            background: rgba(239,68,68,0.1);
+
+            border: 1px solid rgba(239,68,68,0.25);
+
+            color: #fca5a5;
+
+            font-size: 13px;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .back-link {
+            display: block;
+
+            margin-top: 22px;
+
+            text-align: center;
+
+            color: #9ca3af;
+
+            text-decoration: none;
+
+            font-size: 13px;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <div class="login-card">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+            <h1>NovaWeb Admin</h1>
+
+            <p>Connectez-vous à votre espace administrateur</p>
+
+        </div>
+
+
+        <div id="errorMessage" class="error-message">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Identifiants incorrects.
+        </div>
+
+
+        <form id="loginForm">
+
+            <div class="form-group">
+
+                <label for="username">
+                    Nom d'utilisateur
+                </label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Nom d'utilisateur"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Mot de passe
+                </label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Mot de passe"
+                        required
+                    >
+
+                    <span
+                        class="password-toggle"
+                        id="passwordToggle"
+                    >
+                        <i class="fa-solid fa-eye"></i>
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-btn"
+            >
+                Se connecter
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </form>
+
+
+        <a href="../index.html" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i>
+            Retour à NovaWeb
+        </a>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const loginForm =
+    document.getElementById("loginForm");
+
+const errorMessage =
+    document.getElementById("errorMessage");
+
+const passwordToggle =
+    document.getElementById("passwordToggle");
+
+const passwordInput =
+    document.getElementById("password");
+
+
+/* ================================
+   SHOW / HIDE PASSWORD
+================================ */
+
+passwordToggle.addEventListener(
+    "click",
+    () => {
+
+        if (passwordInput.type === "password") {
+
+            passwordInput.type = "text";
+
+            passwordToggle.innerHTML =
+                '<i class="fa-solid fa-eye-slash"></i>';
+
+        } else {
+
+            passwordInput.type = "password";
+
+            passwordToggle.innerHTML =
+                '<i class="fa-solid fa-eye"></i>';
+
+        }
+
+    }
+);
+
+
+/* ================================
+   LOGIN
+================================ */
+
+loginForm.addEventListener(
+    "submit",
+    (event) => {
+
+        event.preventDefault();
+
+        const username =
+            document.getElementById("username").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
+
+        /*
+            TEMPORARY ADMIN LOGIN
+        */
+
+        if (
+            username === "admin" &&
+            password === "NovaWebDemo2026"
+        ) {
+
+            localStorage.setItem(
+                "novawebAdminLogged",
+                "true"
+            );
+
+            window.location.href =
+                "index.html";
+
+        } else {
+
+            errorMessage.classList.add("show");
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
